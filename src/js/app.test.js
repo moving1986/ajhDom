@@ -1,4 +1,5 @@
 import demo from "./app";
+import Game from './app';
 
 describe("Пример теста", () => {
   test.each([
@@ -8,4 +9,12 @@ describe("Пример теста", () => {
   ])("demo($str)", ({ str, expected }) => {
     expect(demo(str)).toBe(expected);
   });
+});
+
+
+
+test('Game initializes correctly', () => {
+  document.body.innerHTML = '<div class="game-field"></div>';
+  const game = new Game(document.querySelector('.game-field'));
+  expect(game).toBeDefined();
 });

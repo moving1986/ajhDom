@@ -1,4 +1,4 @@
-export class Game {
+export default class Game {
   constructor(element) {
     this._element = element;
   }
