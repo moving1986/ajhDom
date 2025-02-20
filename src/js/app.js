@@ -1,5 +1,7 @@
 // TODO: write code here
-
+/**
+ * @jest-environment jsdom
+ */
 import { Game } from "./Game";
 
 // comment this to pass build
