@@ -1,3 +1,4 @@
+import demo from "./app";
 import Game from "./app";
 
 describe("Пример теста", () => {
