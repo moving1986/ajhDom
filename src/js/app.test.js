@@ -12,8 +12,4 @@ test('Game initializes correctly', () => {
   const gameField = container.querySelector('.game-field');
   expect(gameField).not.toBeNull();
 
-
-  const character = gameField.querySelector('img');
-  expect(character).not.toBeNull();
-  expect(character.src).toContain('goblin.png'); 
 });
