@@ -1,5 +1,3 @@
-import imageGoblin from "../img/goblin.png";
-
 export default class Game {
   constructor(element) {
     this._element = element;
@@ -23,7 +21,7 @@ export default class Game {
 
    
     this.character = document.createElement("img");
-    this.character.src = imageGoblin;
+    this.character.src = "../img/goblin.png";
     this.character.alt = "Goblin";
 
   

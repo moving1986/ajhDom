@@ -1,18 +1,19 @@
-import demo from "./app";
-import Game from "./app";
+import Game from './Game';
 
-describe("Пример теста", () => {
-  test.each([
-    { str: "Hello!", expected: "Demo: Hello!" },
-    { str: "", expected: "Demo: " },
-    { str: 100, expected: "Demo: 100" },
-  ])("demo($str)", ({ str, expected }) => {
-    expect(demo(str)).toBe(expected);
-  });
-});
+test('Game initializes correctly', () => {
 
-test("Game initializes correctly", () => {
-  document.body.innerHTML = '<div class="game-field"></div>';
-  const game = new Game(document.querySelector(".game-field"));
-  expect(game).toBeDefined();
+  document.body.innerHTML = '<div id="game-container"></div>';
+  const container = document.getElementById('game-container');
+
+  const game = new Game(container);
+  game.startGame();
+
+
+  const gameField = container.querySelector('.game-field');
+  expect(gameField).not.toBeNull();
+
+
+  const character = gameField.querySelector('img');
+  expect(character).not.toBeNull();
+  expect(character.src).toContain('goblin.png'); 
 });
