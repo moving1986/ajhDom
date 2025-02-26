@@ -8,11 +8,12 @@ body {
     flex-wrap: wrap;
 }
 
-.col {
+.cell {
     box-sizing: border-box;
     width: 140px;
     height: 140px;
     padding: 10px;
 
     border: 1px solid #000;
+    border-radius: 10px;
 }

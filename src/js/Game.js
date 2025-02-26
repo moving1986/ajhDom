@@ -1,26 +1,50 @@
+import imageGoblin from "../img/goblin.png";
+
 export default class Game {
   constructor(element) {
     this._element = element;
+    this.cells = []; 
+    this.character = null;
+    this.currentCellIndex = null; 
   }
-  randPosition() {
-    const allFields = this._element.querySelectorAll(".col");
 
-    allFields.forEach((field) => {
-      const img = field.querySelector("img");
-      if (img) {
-        img.remove();
-      }
-    });
+  renderGame() {
+    const gameField = document.createElement("div");
+    gameField.classList.add("game-field");
+    this._element.appendChild(gameField);
 
-    const img = document.createElement("img");
-    img.src = "2dbd01ce16c0fa83cb67.png";
-    img.alt = "Goblin";
+    
+    for (let i = 0; i < 16; i++) {
+      const cell = document.createElement("div");
+      cell.classList.add("cell");
+      gameField.appendChild(cell);
+      this.cells.push(cell);
+    }
 
-    let rand;
+   
+    this.character = document.createElement("img");
+    this.character.src = imageGoblin;
+    this.character.alt = "Goblin";
+
+  
+    this.currentCellIndex = Math.floor(Math.random() * 16);
+    this.cells[this.currentCellIndex].appendChild(this.character);
+  }
+
+  
+  moveCharacter() {
+    let newCellIndex;
     do {
-      rand = Math.floor(Math.random() * allFields.length);
-    } while (allFields[rand].querySelector("img"));
+      newCellIndex = Math.floor(Math.random() * 16);
+    } while (newCellIndex === this.currentCellIndex); 
 
-    allFields[rand].appendChild(img);
+    this.cells[newCellIndex].appendChild(this.character);
+    this.currentCellIndex = newCellIndex;
+  }
+
+ 
+  startGame() {
+    this.renderGame(); 
+    setInterval(() => this.moveCharacter(), 2000); 
   }
 }
